@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boolzap</title>
+    <title>Document</title>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
@@ -17,123 +17,122 @@
 </head>
 <body>
     <div id="root">
-        <div>
-            <div class="app-wrapper">  
-                <div class="flex-container app-adjustments">
-                    <div class="application-window">
-
-                        <!-- SEZIONE CONTTATTI -->
-                        <section class="contacts-section">
-                            <header class="flex-container header-adjustments">
-                                <div class="flex-container flex-username">
-                                    <div>
-                                        <img src="img/avatar_io.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <span class="user-name">Nome Utente</span>
-                                    </div>
+        <div class="app-wrapper">
+            <div class="flex-container app-adjustments">
+                <div class="application">
+                    <!-- CONTACTS SECTION -->
+                    <section class="contacts-section">
+                        <!-- HEADER -->
+                        <header class="flex-container header-adjustments">
+                            <!-- USERNAME -->
+                            <div class="flex-container flex-username">
+                                <div>
+                                    <img src="img/avatar_io.jpg" alt="">
                                 </div>
-                                <div class="flex-container flex-icons">
-                                    <span><i class="fa-solid fa-circle-notch"></i></span>
-                                    <span><i class="fa-solid fa-message"></i></span>
-                                    <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                                <div>
+                                    <span class="user-name">Nome Utente</span>
                                 </div>
-                            </header>
-                            <main>
-                                <div class="banner-background" >
+                            </div>
+                            <!-- ICON -->
+                            <div class="flex-container flex-icons">
+                                <span><i class="fa-solid fa-circle-notch"></i></span>
+                                <span><i class="fa-solid fa-message"></i></span>
+                                <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                            </div>
+                        </header>
+                        <!-- MAIN -->
+                        <main>
+                            <div class="banner-background">
+                                <div class="banner-adjustments">
                                     <div class="bell-icon">
                                         <i class="fa-solid fa-bell-slash"></i>
                                     </div>
-                                    <div class="banner-adjustments">
-                                        
-                                        <h4>ricevi notifiche di nuovi messaggi</h4>
-                                        <a class="notifications" href="#">Attiva notifica desktop</a>
+                                    <div>
+                                        <h4>Ricevi notifiche di nuovi messaggi</h4>
+                                        <a class="notifications" href="#">Attiva notifiche Desktop</a>
                                     </div>
                                 </div>
-                                <!-- INIZIO SEZIONE BARRA RICERCA E CONTATTI -->
-                                <div class="contacts-adjustment">
-                                    <div class="form">
-                                        <form>
-                                            <button type="button"><i class="fa fa-search"></i></button>
-                                            <input type="text" placeholder="Cerca o inizia una nuova chat">
-                                        </form>
-                                    </div>
-                                    <div class="contacts-cards">
-                                        <div class="contact-card">
-                                            <div class="contact-image">
-                                               <img src="" alt="">
-                                            </div>  
-                                            <div class="contact-name">
-                                                <span></span>
-                                            </div>
+                            </div>
+                            <div class="contacts-adjustments">
+                                <div class="form">
+                                    <form>
+                                        <button type="button"><i class="fa fa-search"></i></button>
+                                        <input v-model="contactsSearch" @keyup="contactsFilter()" type="text" placeholder="Cerca o inizia nuova chat">
+                                    </form>
+                                </div>
+                                <div class="contacts-cards">
+                                    <div v-for="(contact,index) in contacts" v-if="contacts[index].visible" class="contact-card" @click="setActiveContact(index)" :class="activeContact === index ? 'active-contact' : ''">
+                                        <div class="contact-image">
+                                            <img :src="`img/avatar${contacts[index].avatar}.jpg`" alt="">
+                                        </div>
+                                        <div class="contact-name">
+                                            <span>{{ contacts[index].name }}</span>
                                         </div>
                                     </div>
                                 </div>
-                            </main>
-                        </section>
-                        <!-- SEZIONE MESSAGGI -->
-                        <section class="messages-section">
-                            <header class="flex-container header-adjustment">
-                                <!-- username -->
-                                <div class="flex-container">
-                                    <div>
-                                        <img src="" alt="">
-                                    </div>
-                                    <div>
-                                        <span class="user-name"></span>
-                                        <div>
-                                            <span>ultimo accesso eseguito alle</span>
-                                        </div>
+                            </div>
+                        </main>
+                    </section>
+                    <!-- MESSAGES SECTION -->
+                    <section class="messages-section">
+                        <header class="flex-container header-adjustments">
+                            <!-- USERNAME -->
+                            <div class="flex-container">
+                                <div>
+                                    <img :src="`img/avatar${contacts[activeContact].avatar}.jpg`" alt="">
+                                </div>
+                                <div>
+                                    <span class="user-name">{{ contacts[activeContact].name }}</span>
+                                    <div class="">
+                                        <span>ultimo accesso eseguito alle</span>
                                     </div>
                                 </div>
-                                  <!-- ICONS MESSAGGES-->
+                            </div>
+                            <!-- ICON -->
                             <div class="flex-container flex-icons">
                                 <span><i class="fa-solid fa-magnifying-glass"></i></span>
                                 <span><i class="fa-solid fa-paperclip"></i></span>
                                 <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
                             </div>
-                            </header>
-                            <!-- MAIN MESSAGES -->
-                            <main class="messages-background">
-                                <div class="messages-container">
-                                    <!-- MESSAGES -->
-                                    <div class="flex-container messages-adjustments">
-                                        <div  class="message">
-                                            <!-- MESSAGE TEXT -->
-                                            <span>
-                                               
-                                            </span>
-                                            <!-- MESSAGE DATA -->
-                                            <span class="message-data">
-                                               
-                                            </span>
-                                        </div>
+                        </header>
+                        <!-- MAIN -->
+                        <main class="messages-background">
+                            <div class="messages-container">
+                                <!-- MESSAGES -->
+                                <div class="flex-container messages-adjustments">
+                                    <div v-for="(message,index) in contacts[activeContact].messages" class="message" :class="contacts[activeContact].messages[index].status === 'received' ? 'received' : 'sent'">
+                                        <!-- MESSAGE TEXT -->
+                                        <span>
+                                            {{contacts[activeContact].messages[index].text}}
+                                        </span>
+                                        <!-- MESSAGE DATA -->
+                                        <span class="message-data">
+                                            {{contacts[activeContact].messages[index].date}}
+                                        </span>
                                     </div>
                                 </div>
-                                <!-- LOWER ZONE  -->
-                                <div class="lower-main">
-                                    <div class="form lower-main-form">
-                                        <div class="smile-icon">
-                                            <i class="fa-solid fa-face-smile"></i>
-                                        </div>
-                                        <form>
-                                            <input type="text" placeholder="Scrivi un messaggio">
-                                            <span></span>
-                                        </form>
-                                        <div class="audio-icon">
-                                            <i class="fa-solid fa-microphone"></i>
-                                        </div>
+                            </div>
+                            <!-- LOWER MAIN -->
+                            <div class="lower-main">
+                                <div class="form lower-main-form">
+                                    <div class="smile-icon">
+                                        <i class="fa-solid fa-face-smile"></i>
+                                    </div>
+                                    <form @submit.prevent="addNewMessage()">
+                                        <input v-model="newMessage" type="text" placeholder="Scrivi un messaggio">
+                                        <span v-on:click="addNewMessage()"></span>
+                                    </form>
+                                    <div class="audio-icon">
+                                        <i class="fa-solid fa-microphone"></i>
                                     </div>
                                 </div>
-                            </main>
-                        </section>
-                    </div>
-                </div> 
+                            </div>
+                        </main>
+                    </section>
+                </div>
             </div>
         </div>
-
     </div>
-
     <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

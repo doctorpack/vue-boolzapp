@@ -6,41 +6,52 @@
 body{
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
-
+/* PAGE ADJUSTMENTS */
 .app-wrapper{
     height: 100vh;
     width: 100%;
-    background: linear-gradient(to top,white, #eee 75%, rgb(17, 185, 17) 75%);
+    background-color: lightcyan;
 }
-
+.container{
+    width: 75%;
+    margin: 0 auto;
+}
 .app-adjustments{
     height: 100%;
     justify-content: center;
     align-items: center;
 }
-
-.application-window {
+.application{
     height: 90vh;
     width: 75%;
     display: flex;
     border: 1px solid #d6d6d6;
 }
-
-
-/* ----------------------------------
-ELEMENTI GLOBALI
---------------------------------------
- */
-
- /* tutte le immagini avranno stessa dimensione settata */
+/* COMMON */
+main{
+    height: calc(100% - 8%);
+    display: flex;
+    flex-direction: column;
+}
+header{
+    min-height: 8%;
+    background-color: whitesmoke;
+}
 img{
-    height: 40px;
     width: 40px;
+    height: 40px;
     border-radius: 50%;
-} 
-
+}
 .flex-container{
     display: flex;
+}
+/* CONTACTS SECTION */
+.contacts-section{
+    overflow: hidden;
+    width: 35%;
+    height: 100%;
+    background-color: #fafafa;
+    border-right: 1px solid #d6d6d6;
 }
 .header-adjustments{
     height: 10%;
@@ -48,7 +59,11 @@ img{
     justify-content: space-between;
     padding: 0 1rem;
 }
-/* tutte le icone avranno la stessa dimensione e caratteristiche  */
+/* USERNAME */
+.flex-username{
+    align-items: center;
+}
+/* ICONS */
 .flex-icons{
     align-items: center;
 }
@@ -57,42 +72,16 @@ img{
     font-size: 1.5rem;
     color: #b1b1b1;
 }
-header{
-    min-height: 8%;
-    background-color: whitesmoke;
+.user-name{
+    font-size: 1.1rem;
 }
-main{
-    height: calc(100% - 8%);
-    display: flex;
-    flex-direction: column;
-}
-/* ----------------------------------
-SEZIONE CONTATTI 
--------------------------------------*/
-
-/* (header) */
-.contacts-section{
-    overflow: hidden;
-    width: 35%;
-    height: 100%;
-    background-color: #fafafa;
-    border-right: 1px solid #d6d6d6;
-}
-.header-contacts{
-    min-height: 8%;
-    background-color: whitesmoke;
-}
-.flex-username{
-    align-items: center;
-}
-
-/* banner nnotification */
+/* BANNER */
 .banner-background{
     background-color: #8edafb;
     padding: 1rem 0;
     min-height: 10%;
 }
-.banner-adjustments { /*controllare soluzione alternativa a position*/
+.banner-adjustments{
     display: flex;
     align-items: center;
 }
@@ -114,7 +103,6 @@ SEZIONE CONTATTI
 .contacts-adjustments .form{
     margin: 0.5 0.5rem;
 }
-
 form{
     display: flex;
     justify-content: flex-start;
@@ -132,7 +120,7 @@ form input{
     border: none;
     width: 100%;
 }
-/* CONTACTS CARDS SINGOL AND GROUP */
+/* CONTACTS CARDS */
 .contacts-adjustments{
     overflow-y: auto;
     height: calc(100% - 10%);
@@ -155,16 +143,15 @@ form input{
 .active-contact{
     background-color: lightgray;
 }
-/* --------------------------------------------- */
-/* SEZIONE MESSAGGI  */
+/* MESSAGES SECTION */
 .messages-section{
-background-image: url(../img/mine.jpg);
-height: 100%;
-width: 75%;
-
+    width: 65%;
+    height: 100%;
 }
-.user-name{
-    font-size: 1.1rem;
+.messages-background{
+    background-image: url(../img/mine.jpg);
+    height: calc(100% - 10%);
+    width: 100%;
 }
 .messages-container{
     height: calc(100% - 8%);
@@ -172,6 +159,10 @@ width: 75%;
     padding-top: 2rem;
     overflow-y: auto;
 }
+.messages-adjustments{
+    flex-direction: column;
+}
+/* MESSAGES */
 .message{
     max-width: 40%;
     padding: 1rem 1rem;
@@ -179,8 +170,22 @@ width: 75%;
     border-radius: 10px;
     margin: 1rem 0;
 }
-
-/* ZONA LOWER MESSAGES */
+.received{
+    background-color: white;
+    align-self: flex-start;
+}
+.sent{
+    background-color: #d5f9ba;
+    align-self: flex-end;
+}
+/* MESSAGE DATA */
+.message-data{
+    display: block;
+    font-size: 0.8rem;
+    color: grey;
+    text-align: right;
+}
+/* LOWER MAIN */
 .lower-main{
     background-color: rgba(243, 238, 234, 0.9);
     height: 8%;
